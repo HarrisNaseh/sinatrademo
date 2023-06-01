@@ -1,5 +1,10 @@
 require 'sinatra'
+require 'json'
+
 
 get '/' do
-  "Hello, world"
+  a = []
+  File.foreach("cake.list") {|line| a.push(line.chomp)}
+  a.join("<br>")
+  
 end
