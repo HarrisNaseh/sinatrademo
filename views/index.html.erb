@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang= "en">
+  <body>
+        <h1>My Favorite Movies</h1>
+    <ul>
+      <% movies.each do |movie| %>
+        <li><%= movie.title %></li>
+      <% end %>
+    </ul>
+  <div id ="json">
+    <p>This is a test</p>
+  </div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type = "text/javascript"> 
+    $(document).ready(function(){
+      $.getJSON("/cake.json", function (data) {
+        $.each( data, function(cake) {
+    items.push( "<li>" + cake + "</li>" );
+  });
+      }
+
+
+});
+  </script>
+
+</html>
+

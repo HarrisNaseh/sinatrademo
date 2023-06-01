@@ -1,11 +1,14 @@
 require 'sinatra'
 require 'json'
+require 'sinatra/json'
+require 'sinatra/activerecord'
 
 
 get '/' do
   a = []
   File.foreach("cake.list") {|line| a.push(line.chomp)}
-  a.join("<br>")#joins all the array objects into a single string with <br> in between each
+  @cakes = a
+  erb :index
 end
 
 get '/cakes.json' do
@@ -13,3 +16,4 @@ get '/cakes.json' do
   File.foreach("cake.list") {|line| a.push(line.chomp)}
   return a.to_json# returns a single json string with all the cakes
 end
+
